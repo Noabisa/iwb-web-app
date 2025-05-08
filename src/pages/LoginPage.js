@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import OTPModal from './OTPModal';  // OTPModal component for OTP input
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const [showOTPModal, setShowOTPModal] = useState(false);
+  const [otp, setOtp] = useState('');
   const navigate = useNavigate();
 
   // Simple email validation
@@ -22,8 +24,6 @@ const LoginPage = () => {
       setLoading(false);
       return;
     }
-
-    // Optionally, add password strength validation here if needed
 
     try {
       const res = await fetch('http://localhost:5000/api/auth/login', {
@@ -43,7 +43,13 @@ const LoginPage = () => {
       localStorage.setItem('temp_email', email);
       localStorage.setItem('role', data.role); // Needed for redirect after OTP
 
-      navigate('/verify-otp');
+      // Store the OTP received from the backend
+      const generatedOtp = data.otp;
+      setOtp(generatedOtp);
+
+      // Show OTP Modal to enter OTP
+      setShowOTPModal(true);
+
     } catch (err) {
       setLoading(false);
       setErrorMsg('Network error. Try again.');
@@ -79,6 +85,11 @@ const LoginPage = () => {
           )}
         </button>
       </form>
+
+      {/* OTP Modal */}
+      {showOTPModal && (
+        <OTPModal otp={otp} setShowOTPModal={setShowOTPModal} />
+      )}
     </div>
   );
 };
@@ -101,7 +112,6 @@ const btnStyle = {
   cursor: 'pointer',
 };
 
-// Add a basic loading spinner style
 const spinnerStyle = {
   border: '4px solid rgba(255, 255, 255, 0.3)',
   borderTop: '4px solid #fff',
@@ -110,13 +120,5 @@ const spinnerStyle = {
   height: '20px',
   animation: 'spin 1s linear infinite',
 };
-
-// CSS for the spinner animation (you can add this to your CSS file)
-const spinnerCSS = `
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-`;
 
 export default LoginPage;

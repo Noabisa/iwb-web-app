@@ -9,12 +9,10 @@ const OTPVerifyPage = () => {
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
-  // Handle OTP verification
   const handleVerify = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message on each submit
+    setError('');
 
-    // Check if OTP is entered
     if (!otp) {
       setError('OTP cannot be empty.');
       return;
@@ -28,57 +26,39 @@ const OTPVerifyPage = () => {
       return;
     }
 
-    setLoading(true); // Set loading state while verifying OTP
+    setLoading(true);
 
     try {
-      // Send OTP verification request to the backend
       const response = await fetch('/api/auth/verify-otp', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        const token = data.token;
-
-        // Store token and email in localStorage
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', data.token);
         localStorage.setItem('email', email);
+        setUser({ token: data.token, role });
 
-        // Update auth context
-        setUser({ token, role });
-
-        // Clean up temporary values
         localStorage.removeItem('temp_email');
         localStorage.removeItem('role');
 
-        // Redirect based on the user's role
         switch (role) {
-          case 'sales':
-            navigate('/sales');
-            break;
+          case 'sales': navigate('/sales'); break;
           case 'finance':
-          case 'investor':
-            navigate('/income');
-            break;
-          case 'developer':
-            navigate('/developer');
-            break;
-          default:
-            navigate('/');
+          case 'investor': navigate('/income'); break;
+          case 'developer': navigate('/developer'); break;
+          default: navigate('/');
         }
       } else {
         setError(data.message || 'Invalid OTP.');
       }
-    } catch (error) {
-      console.error('OTP verification error:', error);
+    } catch (err) {
       setError('Error verifying OTP. Please try again.');
     } finally {
-      setLoading(false); // Reset loading state after the request
+      setLoading(false);
     }
   };
 
@@ -89,13 +69,13 @@ const OTPVerifyPage = () => {
         <input
           type="text"
           value={otp}
-          onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))} // Limit OTP to 6 digits
+          onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
           placeholder="Enter 6-digit OTP"
           maxLength={6}
           required
           style={inputStyle}
         />
-        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message */}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit" style={btnStyle} disabled={loading}>
           {loading ? 'Verifying...' : 'Verify'}
         </button>
