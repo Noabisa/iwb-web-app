@@ -1,14 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const dotenv = require('dotenv'); // To load environment variables
+const helmet = require('helmet'); // For security headers
+
+dotenv.config();  // Load environment variables from a .env file
 
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;  // Use environment variable or default to 5000
 
 // Middleware
 app.use(cors());
+app.use(helmet());  // Add security headers
 app.use(express.json());  // For parsing application/json
 
 // Static file serving
@@ -26,7 +31,30 @@ app.use('/api/queries', require('./routes/queries'));
 app.use('/api/system-status', require('./routes/systemStatus'));
 app.use('/api/backup', require('./routes/backup'));
 
+// Global Error Handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong, please try again later.' });
+});
+
 // Start server
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`✅ Server running at http://localhost:${port}`);
+});
+
+// Graceful shutdown handling
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully...');
+  server.close(() => {
+    console.log('Closed all connections.');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received, shutting down gracefully...');
+  server.close(() => {
+    console.log('Closed all connections.');
+    process.exit(0);
+  });
 });
