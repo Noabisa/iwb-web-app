@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "NTEBOHELENG MPHAPANG",
+    "email": "moselantjamphapang@gmail.com",
+    "message": "hello",
+    "response": null,
+    "status": "pending",
+    "created_at": "2025-05-07T15:52:42.000Z"
+  },
+  {
+    "id": 2,
+    "name": "NTEBOHELENG MPHAPANG",
+    "email": "moselantjamphapang@gmail.com",
+    "message": "qdEFW",
+    "response": " nm,",
+    "status": "complete",
+    "created_at": "2025-05-07T16:25:04.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Test User",
+    "email": "test1@example.com",
+    "message": "How do I reset my password?",
+    "response": "You can reset your password on the login page by clicking \"Forgot Password\".",
+    "status": "complete",
+    "created_at": "2025-05-07T16:34:05.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Test User",
+    "email": "test2@example.com",
+    "message": "Do you provide refunds?",
+    "response": "Yes, we offer a full refund within 30 days of purchase.",
+    "status": "complete",
+    "created_at": "2025-05-07T16:34:05.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Test User",
+    "email": "test3@example.com",
+    "message": "Can I change my email address?",
+    "response": "Yes, go to your profile settings to update your email.",
+    "status": "complete",
+    "created_at": "2025-05-07T16:34:05.000Z"
+  },
+  {
+    "id": 6,
+    "name": "NTEBOHELENG MPHAPANG",
+    "email": "moselantjamphapang@gmail.com",
+    "message": "Can I change my email address?",
+    "response": "Yes, go to your profile settings to update your email.",
+    "status": "complete",
+    "created_at": "2025-05-07T16:34:53.000Z"
+  },
+  {
+    "id": 7,
+    "name": "NTEBOHELENG MPHAPANG",
+    "email": "moselantjamphapang@gmail.com",
+    "message": "Do you provide refunds",
+    "response": "Yes, we offer a full refund within 30 days of purchase.",
+    "status": "complete",
+    "created_at": "2025-05-07T16:36:07.000Z"
+  },
+  {
+    "id": 8,
+    "name": "NTEBOHELENG MPHAPANG",
+    "email": "noabi@mail.com",
+    "message": "Can I change my email address?",
+    "response": "Yes, go to your profile settings to update your email.",
+    "status": "complete",
+    "created_at": "2025-05-07T16:54:14.000Z"
+  }
+]

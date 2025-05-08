@@ -1,0 +1,27 @@
+.expense-card {
+    background-color: #fef9c3;
+    border-left: 6px solid #facc15;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .expense-card:hover {
+    background-color: #fef08a;
+  }
+  
+  .expense-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 0.5rem;
+  }
+  
+  .expense-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #dc2626;
+  }
+  

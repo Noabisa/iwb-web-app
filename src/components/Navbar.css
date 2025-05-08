@@ -1,0 +1,94 @@
+/* Sticky, animated navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow-x: auto; /* Allow scroll if many links */
+}
+
+/* Hide navbar on scroll down */
+.navbar.hide {
+  transform: translateY(-100%);
+}
+
+/* Keep links horizontal */
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevent wrapping vertically */
+  white-space: nowrap;
+}
+
+/* Link styling */
+.navbar-links a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.navbar-links a:hover {
+  color: #1f2937;
+}
+
+/* Right section (user + logout) */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.navbar-right span {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.navbar-right button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.navbar-right button:hover {
+  background: #dc2626;
+}
+
+/* Keep layout horizontal on all screen sizes */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 0.5rem;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .navbar-links {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .navbar-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar-right {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,13 @@
+.expenses-dashboard {
+    padding: 6rem 1.5rem 2rem; /* top space for navbar (6rem ≈ 96px) */
+    background-color: #f9fafb;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .expenses-dashboard {
+      padding: 5rem 1rem 2rem;
+    }
+  }
+  

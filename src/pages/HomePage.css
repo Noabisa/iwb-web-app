@@ -1,0 +1,156 @@
+/* HomePage.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.homepage-layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 0px; /* space for navbar */
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.hero-section {
+  text-align: center;
+  background: linear-gradient(to right, #e0f7fa, #e8f5e9);
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.hero-content img.logo {
+  max-width: 120px;
+  margin-bottom: 1rem;
+}
+
+.primary-button {
+  background-color: #22c55e;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+  background-color: #16a34a;
+}
+
+.about-section, .services-section, .impact-section,
+.investor-section, .certifications-section,
+.why-choose-section, .testimonials-section, .partners-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.services-cards, .impact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card, .impact-card {
+  flex: 1;
+  min-width: 220px;
+  padding: 1rem;
+  background-color: #f1f5f9;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.investor-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.investor-button:hover {
+  background-color: #2563eb;
+}
+
+.testimonial {
+  background-color: #e0f2fe;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.footer {
+  background-color: #1f2937;
+  color: white;
+  padding: 3rem 2rem 1rem;
+  margin-top: 2rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-content div {
+  flex: 1 1 200px;
+}
+
+.footer-links ul,
+.footer-contact p,
+.footer-investor p {
+  margin: 0.5rem 0;
+}
+
+.footer-links li {
+  cursor: pointer;
+  list-style: none;
+  margin: 0.3rem 0;
+}
+
+.footer-links li:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+  .services-cards, .impact-cards, .footer-content {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 3rem 1rem;
+  }
+}
